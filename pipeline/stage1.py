@@ -35,6 +35,7 @@ while isLooping:
     try:
         # Try clicking button; leave loop if succesful
         div = driver.find_element_by_class_name('selectable-view')
+        time.sleep(1)
         div.click()
         isLooping = False
     except:
@@ -44,12 +45,12 @@ while isLooping:
         time.sleep(1)
 
 
-time.sleep(2)
+time.sleep(1)
 
 # Click 'title="Edit Table Options"' div to reveal Page Size input field
 driver.find_element_by_xpath('//*[@title="Edit Table Options"]').click()
 
-time.sleep(2)
+time.sleep(1)
 
 # Set the 'Page Size input field' to max permitted value (=3000)
 input = driver.find_element_by_class_name('firefly-inputfield-valid')
@@ -58,6 +59,8 @@ driver.execute_script(
     "console.log(arguments[0]);arguments[0].setAttribute('value', '3000')", input)
 input.send_keys('3000')  # Type 3000
 input.send_keys(u'\ue007')  # Type Enter
+
+time.sleep(4)
 
 # Extract html as it now stands in Chrome browser
 html_source: str = driver.page_source
